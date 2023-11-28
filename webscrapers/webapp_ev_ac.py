@@ -17,10 +17,10 @@ urls = [
 try:
     # Connection to the database
     db = mysql.connector.connect(
-        host="127.0.0.1",
-        user="pesho",
-        password="parola",
-        database="WebScrape"
+       host="sql11.freemysqlhosting.net",
+        user="sql11665896",
+        password="Mfc5Y2lNTe",
+        database="sql11665896"
     )
 
     cursor = db.cursor()

@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
 
     //Връзки
-    $conn = new mysqli("sql309.infinityfree.com", "if0_35510034", "15NZ44uf0qs6uUL", "if0_35510034_web");
+    $conn = new mysqli("sql11.freemysqlhosting.net", "sql11665896", "Mfc5Y2lNTe", "sql11665896"); 
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);

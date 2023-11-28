@@ -40,10 +40,11 @@ urls = [
 try:
     # Connection to the database
     db = mysql.connector.connect(
-        host="sql309.infinityfree.com",
-        user="if0_35510034",
-        password="15NZ44uf0qs6uUL",
-        database="if0_35510034_web"
+        host="sql11.freemysqlhosting.net",
+        user="sql11665896",
+        password="Mfc5Y2lNTe",
+        database="sql11665896"
+        
     )
 
     cursor = db.cursor()
@@ -128,5 +129,16 @@ try:
 except mysql.connector.Error as e:
     print(f"Database Error: {e}")
 
-except Exception as e:
-    print(f"An error occurred: {e}")
+except mysql.connector.Error as err:
+    if err.errno == mysql.connector.errorcode.ER_ACCESS_DENIED_ERROR:
+        print("Error: Access denied. Please check your username and password.")
+    elif err.errno == mysql.connector.errorcode.ER_BAD_DB_ERROR:
+        print("Error: The specified database does not exist.")
+    elif err.errno == mysql.connector.errorcode.ER_CONNECT_ERROR:
+        print(f"Error: Can't connect to MySQL server on {err.sqlstate}.")
+    else:
+        print(f"Error: {err}")
+finally:
+    # Close the database connection in any case, whether it was successful or not
+    if 'db' in locals() and db.is_connected():
+        db.close()
