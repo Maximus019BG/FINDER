@@ -1,0 +1,249 @@
+*{
+
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: 0;
+   
+    top: -22px;
+}
+body {
+ 
+  
+  overflow: hidden;
+  font-family: 'Archivo Black', sans-serif;
+}
+
+
+h1{
+    font-size: 4vh;
+
+
+
+}
+.card {
+
+ height:min-content;
+  width: 25%;
+  margin-top: 5vw;
+  text-align: start;
+  padding: 4%;
+  border-radius: 1.6vh;
+  background-color: #ffffff40;
+  backdrop-filter: blur(3.2vh) brightness(90%);
+  -webkit-backdrop-filter: blur(3.2vh) brightness(90%);
+  box-shadow: 0vh 0.4vh 0.4vh #00000010, inset 0vh -0.1vh 0.1vh #ffffff20, inset 0vh  0.1vh 0.1vh #ffffff40;
+  transition: all 0.5s ease-in-out;
+  z-index: 1;
+}
+
+  
+  
+.input-content {
+    height: 4.0vh;
+    background-color: transparent;
+    border: none;
+    border-bottom: 0.1vh solid #fff;
+    font-size: 1.6vh;
+    width: 100%;
+    color: #fff;
+    margin-top: 15%;
+    
+  }
+  
+ 
+
+ input:focus {
+    outline: none;
+   
+  }
+label{
+    font-size: 1.9vh;
+
+} 
+::placeholder{
+    font-size: 1.5vh;
+    font-family: 'Archivo Black', sans-serif;
+    color: #00000060;
+
+}
+#TheHoleButton{
+
+margin-top: 7vh;
+
+
+
+}
+.button-wrapper {
+    position: relative;
+  }
+  
+  .button {
+    
+    font-size: 2.4vh;
+    line-height: 3.2vh;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2vh;
+    padding: 1.6vh 3.2vh;
+    background-color: black;
+    color: white;
+    border-radius: 5vh;
+    border: 0;
+    cursor: pointer;
+  }
+  
+  .button-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 8.8vw;
+    height: 6.8vh;
+    background: linear-gradient(
+      90deg,
+      #ff8038 0%,
+      #ff0099 30.43%,
+      #00ebeb 68.23%,
+      #db00ff 100%
+    );
+    background-size: 600% 600%;
+    border-radius: 5vh;
+    animation: AnimateBorder 4s ease infinite;
+    -webkit-animation: AnimateBorder 4s ease infinite;
+    -moz-animation: AnimateBorder 4s ease infinite;
+    z-index: -1;
+    transform: translate(-0.2vh, -0.2vh);
+    transition: filter 1s ease-in;
+  }
+  
+  .button-wrapper:hover .button-bg {
+    filter: blur(1vh);
+    transition: filter 0.4s ease-in;
+  }
+  
+  @-webkit-keyframes AnimateBorder {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @-moz-keyframes AnimateBorder {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes AnimateBorder {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  p {
+   position: relative;
+   font-size:1.3vh;
+   
+
+  }
+  a{
+   text-decoration: none;
+   font-size:1.5vh;
+  
+  }
+#gradient-canvas {
+  width:110vw;
+  height:110vh;
+  --gradient-color-1: #ff0062; 
+  --gradient-color-2: #2c056b; 
+  --gradient-color-3: #fff238;  
+  --gradient-color-4: #ff9361;
+  z-index: -123142; 
+  position:absolute;
+}
+
+
+  @-webkit-keyframes AnimateBorder {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @-moz-keyframes AnimateBorder {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes AnimateBorder {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  p{
+position: relative;
+font-size: 1.3vh;
+
+
+  }
+  a{
+    text-decoration: none;
+    font-size:1.5vh;
+   }
+   
+
+
+  
+  .button-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 9.3vw;
+    height: max(6.7vh);
+    background: linear-gradient(
+      90deg,
+      #ff8038 0%,
+      #ff0099 30.43%,
+      #ebee30 68.23%,
+      #ff3939 100%
+    );
+    background-size: 600% 600%;
+    border-radius: 5vh;
+    animation: AnimateBorder 4s ease infinite;
+    -webkit-animation: AnimateBorder 4s ease infinite;
+    -moz-animation: AnimateBorder 4s ease infinite;
+    z-index: -1;
+    transform: translate(-0.2vh, -0.2vh);
+    transition: filter 1s ease-in;
+  }
+  
