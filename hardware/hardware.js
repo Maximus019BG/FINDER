@@ -52,4 +52,4 @@ function changeColor() {
       950: {
         slidesPerView: 3 } } });
   
-  
+  ////

@@ -25,7 +25,7 @@ function logout() {
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/index/index.css">
     <script src="/index/index.js"></script>
-    <title>Where????</title>
+    <title>F!NDER</title>
 </head>
 
 <body>
@@ -45,7 +45,7 @@ function logout() {
         <li><a  href="#">Всекидневие </a></li>
             </section>
             <section id="li-section">
-            <li><a href="#" > <?php echo  $loginLinkText ?> </a></li> <li id="date"><a><?php echo  date("Y/m/d") ;?></a></li> <li><a href="/index/index.php?logout=true">Log out</a></li>
+            <li><a href="#" > <?php echo  $loginLinkText ?> </a></li> <li id="date"></li> <li><a href="/index/index.php?logout=true">Log out</a></li>
               
                   
          </section>

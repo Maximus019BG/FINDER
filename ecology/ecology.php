@@ -55,16 +55,12 @@
     
     <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
     
-<div class="container2">
+    <div class="container2">
+        <input type="text" class="search" id="search-inp" placeholder="Search..." >
+        <button class="search-btn"  id="search-inp-btn" onclick="search()">&#x027A4;</button>
+    </div>
 
-    <input type="text" class="search" id="search-inp" placeholder="Search...">
-
-    <button class="search-btn"  id="search-inp-btn">&#x027A4;</button>
-
-</div>
-   
-
-                <!--CARDS-SLIDER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+         
 
 <div class="slider owl-carousel">
          <div class="card">
@@ -132,6 +128,29 @@
            autoplayTimeout: 2000, //2000ms = 2s;
            autoplayHoverPause: true,
          });
+
+         function search() {
+    // Get the value from the search input
+    var searchTerm = $("#search-inp").val().toLowerCase();
+
+    // Get all elements with the classes 'title' and 'sub-title'
+    var titles = document.querySelectorAll('.title, .sub-title');
+
+    // Reset color for all titles/sub-titles
+    titles.forEach(function (title) {
+        title.style.color = "";
+    });
+
+    // Loop through each title/sub-title and check if it contains the search term
+    titles.forEach(function (title) {
+        var titleText = title.innerText.toLowerCase();
+        if (titleText.includes(searchTerm)) {
+            title.style.color = "red";
+        }
+    });
+}
+
+
       </script>								
 
  </body>
