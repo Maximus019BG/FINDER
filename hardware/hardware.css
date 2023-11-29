@@ -22,11 +22,92 @@
     
       
   }
-  .search{
-  position: relative;
-
-
+  
+  /* search */
+   
+  *::selection{
+  background-color: transparent;
   }
+  *{
+  cursor: default;
+  box-sizing: border-box;
+  }
+  
+  .container2{
+    top: 10vh;
+    left: 50vh;
+    display: flex;
+    position: absolute;
+    
+  }
+  
+  .search{
+    box-shadow:0 0 1vh 0.1vw #ffffff ;
+    border: 0;
+    border-radius: 3vw 0 0 3vw;
+    padding: 0 1vh 0 10vh;
+    text-align: center;
+    color: black;
+    height: 5vh;
+    width: 64vh;
+    font-size: 2.5vh;
+    font-weight: 700;
+    
+  }
+  .search::selection{
+  background-color: #bcff1f;
+  color: black;
+  }
+  .search:focus{
+  border: 0;
+  outline: 0;
+  }
+  .search:hover{
+  cursor: text;
+  }
+  
+  .search-btn{
+    transition: 0.2s ease-in-out;
+    box-shadow:0 0 2vh 1 greenyellow ;
+    border: 0;
+    border-radius: 0 3vh 3vh 0;
+    padding: 0 1vh 0 1vw;
+    text-align: center;
+    color: black;
+    position: relative;
+    background-color: greenyellow;
+    height: 5vh;
+    width: 14vh;
+    font-size: 2.5vh;
+    font-weight: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .search-btn:hover {
+  transition: 0.2s ease-in-out;
+  background-color: rgb(0, 255, 0);
+  box-shadow:0 0 2vh 1vw rgb(0, 255, 0) ;
+  font-size: 3vh;
+  font-weight: 800;
+  cursor: pointer;
+  }
+  
+  /* ***search-btn focus style*** */
+  
+  .search-btn:focus{
+  transition: 0.2s ease-in-out;
+  background-color: #2be29c;
+  box-shadow:0 0 2vh 0.1vw #2be29c ;
+  font-size: 3vh;
+  font-weight: 800;
+  cursor: pointer;
+  } 
+  
+  /* ***search-btn focus style finsh*** */
+  
+  
+  
   nav {
     position: fixed;
     top: 0;

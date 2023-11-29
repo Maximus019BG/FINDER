@@ -206,8 +206,8 @@ box-sizing: border-box;
   
 }
 .search::selection{
-background-color: red;
-color: white;
+background-color: #bcff1f;
+color: black;
 }
 .search:focus{
 border: 0;
@@ -248,8 +248,8 @@ cursor: pointer;
 
 .search-btn:focus{
 transition: 0.2s ease-in-out;
-background-color: blueviolet;
-box-shadow:0 0 2vh 0.1vw blueviolet ;
+background-color: #2be29c;
+box-shadow:0 0 2vh 0.1vw #2be29c ;
 font-size: 3vh;
 font-weight: 800;
 cursor: pointer;

@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" type="text/css" href="hardware.css">
+    <script type="text/javascript" src="/hardware/hardware.js"></script>
     <style>
         .slider {
             max-width: 110vw;
@@ -29,7 +30,7 @@
         .slider .card {
             flex: 10;
             margin: 0 1%;
-            background: #fff;
+            background: #313131;
         }
 
         .slider .card .img {
@@ -40,7 +41,8 @@
         .slider .card .img img {
             height: 100%;
             width: 100%;
-            object-fit: cover;
+            object-fit:cover;
+            border-radius: 5%;
         }
 
         .slider .card .content {
@@ -55,7 +57,7 @@
         .card .content .sub-title {
             font-size: 2vh;
             font-weight: 600;
-            color: #e74c3c;
+            color: #bcff1f;
             line-height: 2vh;
         }
 
@@ -71,7 +73,7 @@
         }
 
         .card .content .btn button {
-            background: #e74c3c;
+            background: #bcff1f;
             color: #fff;
             border: none;
             outline: none;
@@ -85,6 +87,8 @@
         .card .content .btn button:hover {
             transform: scale(0.9);
         }
+       
+       
     </style>
 </head>
 
@@ -109,21 +113,25 @@
             </ul>
         </nav>
 
-        <section class="search">
-            <div class="container">
-                <div class="search-box">
-                    <input type="text" class="search-box-input" placeholder="What are you looking for?">
-                    <button class="search-box-btn">
-                        <i class="fas fa-search" style="color: #bcff1f;"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
+        
+        <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+    
+    <div class="container2">
+        <input type="text" class="search" id="search-inp" placeholder="Search..." >
+        <button class="search-btn"  id="search-inp-btn" onclick="search()">&#x027A4;</button>
 
+    </div>
+
+
+    
         <div id="searchResults">
             <?php echo $output; ?>
         </div>
     </div>
+
+
+
+
 
     <!-- Include jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -151,6 +159,29 @@
                 }
             });
         });
+
+
+        function search() {
+    // Get the value from the search input
+    var searchTerm = $("#search-inp").val().toLowerCase();
+
+    // Get all elements with the classes 'title' and 'sub-title'
+    var titles = document.querySelectorAll('.title, .sub-title','card');
+
+    // Reset color for all titles/sub-titles
+    titles.forEach(function (title) {
+        title.style.color = "";
+    });
+
+    // Loop through each title/sub-title and check if it contains the search term
+    titles.forEach(function (title) {
+        var titleText = title.innerText.toLowerCase();
+        if (titleText.includes(searchTerm)) {
+            title.style.color = "red";
+        }
+    });
+}
+
     </script>
 
     <!-- Swiper initialization script -->

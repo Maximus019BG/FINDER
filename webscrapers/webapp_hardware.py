@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
-import requests
+from selenium import webdriver
+import time
 import mysql.connector
-import urllib.request
 
 # List of URLs to scrape elements with the specified class and tag
 urls = [
@@ -12,7 +12,7 @@ urls = [
         "price_tag": "span",
         "price_class": "price tm-price uk-price",
         "img_tag": "img",
-        "img_class": "uk-product-image uk-responsive-width uk-responsive-height",  # Add the image class
+        "img_class": "uk-product-image uk-responsive-width uk-responsive-height",
         "type": "SSD"
     },
     {
@@ -22,7 +22,7 @@ urls = [
         "price_tag": "span",
         "price_class": "price tm-price uk-price",
         "img_tag": "img",
-        "img_class": "uk-product-image uk-responsive-width uk-responsive-height",  # Add the image class
+        "img_class": "uk-product-image uk-responsive-width uk-responsive-height",
         "type": "CPU"
     },
     {
@@ -32,7 +32,7 @@ urls = [
         "price_tag": "span",
         "price_class": "price tm-price uk-price",
         "img_tag": "img",
-        "img_class": "uk-product-image uk-responsive-width uk-responsive-height",  # Add the image class
+        "img_class": "uk-product-image uk-responsive-width uk-responsive-height",
         "type": "GPU"
     }
 ]
@@ -44,7 +44,6 @@ try:
         user="sql11665896",
         password="Mfc5Y2lNTe",
         database="sql11665896"
-        
     )
 
     cursor = db.cursor()
@@ -55,17 +54,22 @@ try:
         name_class = url_data["name_class"]
         price_tag = url_data["price_tag"]
         price_class = url_data["price_class"]
-        img_tag = url_data.get("img_tag")  # Get the image tag (optional)
-        img_class = url_data.get("img_class")  # Get the image class (optional)
+        img_tag = url_data.get("img_tag")
+        img_class = url_data.get("img_class")
         product_type = url_data["type"]
 
-        # Use urllib to get the page content
-        with urllib.request.urlopen(url) as response:
-            page_content = response.read()
+        # Use Selenium to get the page content and execute JavaScript
+        options = webdriver.ChromeOptions()
+        options.add_argument('--headless')
+        driver = webdriver.Chrome(options=options)
+        driver.get(url)
+        time.sleep(2)
+
+        # Get the updated page content with JavaScript execution
+        page_content = driver.page_source
 
         # Check if the page content is not empty
         if page_content:
-            # Locate all elements with the specified tag and class for "name" and "price"
             soup = BeautifulSoup(page_content, 'html.parser')
             name_elements = soup.find_all(name_tag, class_=name_class)
             price_elements = soup.find_all(price_tag, class_=price_class)
@@ -76,32 +80,37 @@ try:
                 img_elements = []
 
             if name_elements and price_elements and len(name_elements) == len(price_elements):
-                for name_element, price_element, img_element in zip(name_elements, price_elements, img_elements):
+
+                for i in range(len(name_elements)):
+                    name_element = name_elements[i]
+                    price_element = price_elements[i]
+
+                    # Find all image elements with the specified tag and class
+                    img_element = img_elements[i] if i < len(img_elements) else None
+                    img_src = img_element.get('src') if img_element else None  # Assuming the source link is in the data-src attribute
+
                     name_value = name_element.text.strip()
                     price_value = price_element.text.strip()
-                       
-                    # Use urllib to get the entire img tag
-                    img_tag_html = str(img_element)
-                    
-                    # Check if a record with the same name already exists
+
+                    # Your existing database operations here, using img_src
                     select_query = "SELECT id, price, photo FROM hardware WHERE name = %s"
                     cursor.execute(select_query, (name_value,))
                     existing_record = cursor.fetchone()
 
                     if existing_record:
                         existing_id, existing_price, existing_photo = existing_record
-                        if price_value != existing_price or img_tag_html != existing_photo:
+                        if price_value != existing_price or img_src != existing_photo:
                             # Price or photo has changed; update the record
                             update_query = "UPDATE hardware SET price = %s, photo = %s WHERE name = %s"
-                            cursor.execute(update_query, (price_value, img_tag_html, name_value))
-                            print(f"Updated: {name_value}, New Price: {price_value}, New Photo: {img_tag_html}")
+                            cursor.execute(update_query, (price_value, img_src, name_value))
+                            print(f"Updated: {name_value}, New Price: {price_value}, New Photo: {img_src}")
                         else:
                             print(f"No changes for: {name_value}")
                     else:
                         # No existing record with the same name; insert a new record
                         insert_query = "INSERT INTO hardware (name, price, type, photo) VALUES (%s, %s, %s, %s)"
-                        cursor.execute(insert_query, (name_value, price_value, product_type, img_tag_html))
-                        print(f"Inserted: {name_value}, Price: {price_value}, Type: {product_type}, Photo: {img_tag_html}")
+                        cursor.execute(insert_query, (name_value, price_value, product_type, img_src))
+                        print(f"Inserted: {name_value}, Price: {price_value}, Type: {product_type}, Photo: {img_src}")
 
                 # Commit changes to the database
                 db.commit()
@@ -117,7 +126,7 @@ try:
                 cursor.execute("SET @counter = 0;")
                 cursor.execute("UPDATE hardware SET id = @counter := @counter + 1;")
                 db.commit()
-                
+
             else:
                 print(f"Name or price elements not found on the web page: {url}")
         else:
@@ -126,19 +135,11 @@ try:
     cursor.close()
     db.close()
 
-except mysql.connector.Error as e:
-    print(f"Database Error: {e}")
+except Exception as e:
+    print(f"Error: {e}")
 
-except mysql.connector.Error as err:
-    if err.errno == mysql.connector.errorcode.ER_ACCESS_DENIED_ERROR:
-        print("Error: Access denied. Please check your username and password.")
-    elif err.errno == mysql.connector.errorcode.ER_BAD_DB_ERROR:
-        print("Error: The specified database does not exist.")
-    elif err.errno == mysql.connector.errorcode.ER_CONNECT_ERROR:
-        print(f"Error: Can't connect to MySQL server on {err.sqlstate}.")
-    else:
-        print(f"Error: {err}")
 finally:
-    # Close the database connection in any case, whether it was successful or not
+    if 'driver' in locals():
+        driver.quit()
     if 'db' in locals() and db.is_connected():
         db.close()

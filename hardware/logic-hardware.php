@@ -7,7 +7,7 @@ $database = "sql11665896";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
-
+$conn->set_charset("utf8");
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -37,11 +37,11 @@ if ($result->num_rows > 0) {
 
         $output .= '<div class="card">' .
             '<div class="img" id="' . $row["id"] . '">' .
-            '<img src="' . $row["image_src"] . '" alt="">' . // Assuming there's a column named 'image_src' in your database
+            '<img src="'.$row["photo"]. '" alt="dataBasePhoto" class="dataBasePhoto">' . // Assuming there's a column named 'image_src' in your database
             '</div>' .
             '<div class="content">' .
             '<div class="title">' . $row["name"] . '</div>' .
-            '<div class="sub-title">' . "Type: " . $row["type"] . '</div>' .
+            '<div class="sub-title">' . "Type: " . $row["type"] ."  "."Цена: ".$row["price"] . '</div>' .
             '</div>' .
             '</div>';
 
