@@ -20,7 +20,7 @@ if (isset($_SESSION['user_id'])) {
     
 } else {
     // User is not logged in
-    $loginLinkText = "<a href=\"/log-in/log-in.php \">Sign in </a>"; // Default text for login link
+    $loginLinkText = "<a href=\"/log-in/log-in.php \"> Вписване </a>"; // Default text for login link
 
 }
 

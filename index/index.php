@@ -45,7 +45,7 @@ function logout() {
         <li><a  href="#">Всекидневие </a></li>
             </section>
             <section id="li-section">
-            <li><a href="#" > <?php echo  $loginLinkText ?> </a></li> <li id="date"></li> <li><a href="/index/index.php?logout=true">Log out</a></li>
+            <li><a href="#" > <?php echo  $loginLinkText ?> </a></li> <li id="date"></li> <li><a href="/index/index.php?logout=true">Излизане</a></li>
               
                   
          </section>

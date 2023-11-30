@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ecology</title>
+<title>EveryDay</title>
         <!-- Swiper CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/freeps2/a7rarpress@main/swiper-bundle.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Rubik+Moonrocks&family=Tektur:wght@600;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./ecology.css">
+<link rel="stylesheet" href="./everyday.css">
 
 </head>
 <body>
@@ -47,7 +47,7 @@
 
     <div class="container1">
         <div class="center">
-            <h1 class="apple">Екология</h1>
+            <h1 class="apple">Всекидневие</h1>
         </div>
     </div>
 	
@@ -157,6 +157,6 @@
       </script>								
 
  </body>
- <script src="ecology.js"></script>
+ <script src="everyday.js"></script>
   
 </html>

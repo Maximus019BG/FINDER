@@ -58,14 +58,26 @@ try:
         img_class = url_data.get("img_class")
         product_type = url_data["type"]
 
+
+        
+
         # Use Selenium to get the page content and execute JavaScript
         options = webdriver.ChromeOptions()
-        options.add_argument('--headless')
+        options.add_argument('--headless')  # Remove this line to open a visible window
         driver = webdriver.Chrome(options=options)
         driver.get(url)
-        time.sleep(2)
+        time.sleep(1)
+
+
+     
+
+
+        for _ in range( 15  ):  # Adjust the number of iterations to control the scroll speed
+                driver.execute_script("window.scrollBy(0, 700);")  # Adjust the scroll distance as needed
+                time.sleep(0.5)  # Adjust the sleep duration to control the speed
 
         # Get the updated page content with JavaScript execution
+
         page_content = driver.page_source
 
         # Check if the page content is not empty
@@ -86,7 +98,7 @@ try:
                     price_element = price_elements[i]
 
                     # Find all image elements with the specified tag and class
-                    img_element = img_elements[i] if i < len(img_elements) else None
+                    img_element = img_elements[i] if i <= len(img_elements) else None
                     img_src = img_element.get('src') if img_element else None  # Assuming the source link is in the data-src attribute
 
                     name_value = name_element.text.strip()

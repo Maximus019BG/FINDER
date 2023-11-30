@@ -29,6 +29,8 @@ left: 0;
 height: 7vh;
 width: 100%;
 box-sizing: border-box;
+font-weight: 750;
+font-family: 'Tektur', sans-serif;
 transition: background-color 0.4s ease-in;
 
 }
@@ -51,7 +53,7 @@ li a {
   display: inline-block;
   padding: 1.5vh 2.0vh;
   position: relative;
-  font-size: 1.5vh;
+  font-size: 2vh;
   
 }
 
@@ -104,8 +106,8 @@ display: flex;
 .container1{
 min-height: 100%;
 position: absolute;
-top: 8vh;
-left: 88vh;
+top: 16vh;
+left: 100vh;
 
 }
 
@@ -185,8 +187,8 @@ box-sizing: border-box;
 }
 
 .container2{
-  top: 46vh;
-  left: 50vh;
+  top: 69vh;
+  left: 61vh;
   display: flex;
   position: absolute;
   
