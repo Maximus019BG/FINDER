@@ -2,3 +2,5 @@ beautifulsoup4==4.10.0
 selenium==3.141.0
 requests==2.26.0
 mysql-connector-python==8.0.28
+gunicorn==20.1.0
+
